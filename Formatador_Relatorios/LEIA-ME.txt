@@ -1,0 +1,37 @@
+FORMATADOR DE RELATÓRIOS EXCEL — VERSÃO 2
+
+1. Extraia o ZIP inteiro.
+2. Abra index.html no navegador (Chrome ou Edge).
+3. Selecione um ou vários arquivos .xlsx.
+4. Digite o título para cada arquivo (opcional).
+5. Clique em Formatar arquivos e baixe cada .xlsx ou o ZIP.
+
+O título informado é colocado na primeira linha, mesclado e centralizado.
+Se a planilha já tiver um título, ele será substituído.
+Se a planilha começar diretamente pelos cabeçalhos, o programa insere uma nova linha de título em arquivos simples sem fórmulas. Se houver fórmulas ou recursos avançados, o arquivo é recusado com explicação para evitar danificar referências.
+
+Não há reconhecimento automático por nome de arquivo. Larguras são preservadas ou ajustadas genericamente conforme a opção escolhida.
+Os arquivos são processados localmente. Não são enviados a servidores.
+
+ARQUIVOS
+index.html: interface
+style.css: aparência
+app.js: lógica de processamento Excel e personalização de títulos
+lib/jszip.min.js: leitura e gravação de pacotes .xlsx
+
+RECOMENDAÇÃO: confira o resultado no Excel antes de usar em produção. Arquivos com recursos complexos podem não ser totalmente compatíveis com edição OOXML simplificada.
+
+
+SUPORTE A ARQUIVOS XLS (EXCEL 97-2003)
+-------------------------------------
+- O programa agora aceita .xls e .xlsx, inclusive na mesma seleção.
+- A saída gerada é SEMPRE um novo arquivo .xlsx.
+- .xlsx continua funcionando offline com a biblioteca JSZip incluída.
+- .xls requer a biblioteca SheetJS. O programa tenta carregar uma cópia local
+  (lib/xlsx.full.min.js) e depois tenta CDNs públicos na internet.
+- Para uso totalmente offline com .xls, coloque uma cópia confiável da
+  biblioteca SheetJS xlsx.full.min.js na pasta lib/.
+- A conversão de arquivos .xls pode não preservar perfeitamente macros,
+  objetos, gráficos, imagens, validações e formatações avançadas. Faça
+  conferência de dados e fórmulas na cópia convertida antes de usar.
+- Nunca exclua ou sobrescreva o arquivo original.

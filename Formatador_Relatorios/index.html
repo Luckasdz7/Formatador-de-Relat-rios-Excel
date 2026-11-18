@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Formatador de Relatórios | Excel</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Interface em tela cheia, sem menu lateral */
+    .main { width: 100%; }
+    .content { max-width: 1200px; }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <main class="main">
+      <header class="topbar"><span>Ferramentas / <b>Formatador</b></span><span class="topright">● Ambiente local</span></header>
+      <div class="content">
+        <div class="intro"><div class="eyebrow">AUTOMAÇÃO DE PLANILHAS</div><h1>Formatador de Relatórios</h1><p>Selecione seus arquivos, escreva o título de cada relatório e aplique o padrão visual corporativo. Tudo no seu computador. Para arquivos .xls, é necessário acessar a internet para carregar o conversor.</p></div>
+        <section class="stats">
+          <div class="stat"><div class="stat-icon green">▤</div><div><small>Arquivos selecionados</small><strong id="selectedCount">0</strong></div></div>
+          <div class="stat"><div class="stat-icon blue">✎</div><div><small>Títulos personalizados</small><strong>Livre</strong></div></div>
+          <div class="stat"><div class="stat-icon violet">◷</div><div><small>Arquivos processados</small><strong id="processedCount">0</strong></div></div>
+        </section>
+        <section class="panel upload-panel"><div class="section-head"><div><h2>01 <span>Adicionar arquivos</span></h2><p>Selecione um ou vários arquivos .xls ou .xlsx</p></div><span class="pill">Sem limite fixo de quantidade</span></div>
+          <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Selecionar arquivos Excel"><div class="upload-graphic">⇧</div><h3>Arraste seus arquivos Excel aqui</h3><p>ou clique para selecionar arquivos do seu computador</p><button id="chooseBtn" type="button" class="secondary-btn">Escolher arquivos</button><small>.xls e .xlsx · Saída sempre .xlsx · Arquivos originais preservados</small></div>
+          <input id="fileInput" type="file" multiple accept=".xls,.xlsx" hidden>
+        </section>
+        <section class="panel options-panel"><div class="section-head"><div><h2>02 <span>Configuração do padrão</span></h2><p>O título é definido manualmente na lista de arquivos abaixo</p></div></div>
+          <div class="options-grid">
+            <label class="option"><div><strong>Ajustar altura das linhas</strong><small>Quebra automática e altura aproximada de acordo com o conteúdo</small></div><input id="adjustHeight" type="checkbox" checked><span class="switch"></span></label>
+            <label class="option"><div><strong>Formatar todas as abas</strong><small>Se desmarcado, formata somente a primeira aba</small></div><input id="allSheets" type="checkbox"><span class="switch"></span></label>
+            <label class="option"><div><strong>Preservar larguras existentes</strong><small>Ignora larguras dos modelos e mantém as colunas da origem</small></div><input id="keepWidths" type="checkbox"><span class="switch"></span></label></div>
+        </section>
+        <section class="panel files-panel"><div class="section-head"><div><h2>03 <span>Arquivos da fila</span></h2><p id="queueDescription">Digite um título para cada arquivo; se deixar vazio, preservaremos o existente.</p></div><button class="text-btn" id="clearBtn" type="button">Limpar lista</button></div><div id="fileList" class="file-list"><div class="empty">Os arquivos selecionados aparecerão aqui.</div></div></section>
+        <div class="actionbar"><div><strong>Pronto para formatar?</strong><small>Os arquivos serão gerados em cópias separadas.</small></div><button id="runBtn" class="primary-btn" disabled>◈ &nbsp; Formatar arquivos</button></div>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+        <section id="results" class="panel results-panel" hidden><div class="section-head"><div><h2>04 <span>Resultados</span></h2><p>Arquivos prontos para download</p></div><button id="downloadAll" class="secondary-btn" type="button">↓ Baixar todos (.zip)</button></div><div id="resultList" class="file-list"></div></section>
+        <footer>Excel .xls / .xlsx → .xlsx · Título personalizado · Arial · Cabeçalho cinza · Bordas finas · Processamento local</footer>
+      </div>
+    </main>
+  </div>
+  <script src="lib/jszip.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
